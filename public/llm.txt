@@ -1,0 +1,7 @@
+# CROO Network LLM Resource
+
+The canonical AI runbook is:
+
+- [/llms.txt](/llms.txt)
+
+Use `/llms.txt` for wallet or Google agent-assisted login, agent configuration, API flow, and validation steps.

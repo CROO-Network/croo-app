@@ -1,0 +1,223 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* ── CROO Design Tokens (aligned with CAP Landing Page) ── */
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Consolas, monospace;
+  --font-heading: var(--font-sans);
+
+  /* CROO brand colors */
+  --color-lime: #6EE646;
+  --color-lime-light: #F0FDE8;
+  --color-canvas: #F5F5F3;
+  --color-canvas-2: #EBEBEA;
+  --color-ink: #0F0F0F;
+  --color-ink-2: #3A3A3A;
+  --color-ink-3: #6B6B6B;
+  --color-ink-4: #9A9A9A;
+  --color-rule: #E2E2E0;
+  --color-dark: #0F0F0F;
+  --color-dark-2: #1A1A1A;
+  --color-dark-3: #252525;
+
+  /* shadcn overrides */
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+:root {
+  --background: #F5F5F3;
+  --foreground: #0F0F0F;
+  --card: #FFFFFF;
+  --card-foreground: #0F0F0F;
+  --popover: #FFFFFF;
+  --popover-foreground: #0F0F0F;
+  --primary: #0F0F0F;
+  --primary-foreground: #F5F5F3;
+  --secondary: #EBEBEA;
+  --secondary-foreground: #0F0F0F;
+  --muted: #EBEBEA;
+  --muted-foreground: #6B6B6B;
+  --accent: #6EE646;
+  --accent-foreground: #0F0F0F;
+  --destructive: #EF4444;
+  --border: #E2E2E0;
+  --input: #E2E2E0;
+  --ring: #6EE646;
+  --radius: 0.625rem;
+  --chart-1: #6EE646;
+  --chart-2: #3A3A3A;
+  --chart-3: #6B6B6B;
+  --chart-4: #9A9A9A;
+  --chart-5: #E2E2E0;
+  --sidebar: #F5F5F3;
+  --sidebar-foreground: #0F0F0F;
+  --sidebar-primary: #0F0F0F;
+  --sidebar-primary-foreground: #F5F5F3;
+  --sidebar-accent: #EBEBEA;
+  --sidebar-accent-foreground: #0F0F0F;
+  --sidebar-border: #E2E2E0;
+  --sidebar-ring: #6EE646;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  html {
+    @apply font-sans;
+    scroll-behavior: smooth;
+  }
+
+  /* Custom scrollbar (aligned with landing page) */
+  ::-webkit-scrollbar { width: 5px; }
+  ::-webkit-scrollbar-track { background: #F5F5F3; }
+  ::-webkit-scrollbar-thumb { background: #D4D4D2; border-radius: 3px; }
+  ::-webkit-scrollbar-thumb:hover { background: #6EE646; }
+}
+
+@layer components {
+  /* Glow effects from landing page */
+  .glow-lime {
+    box-shadow: 0 0 24px rgba(110,230,70,0.28), 0 0 8px rgba(110,230,70,0.15);
+  }
+  .glow-lime-sm {
+    box-shadow: 0 0 12px rgba(110,230,70,0.22);
+  }
+  .text-glow-lime {
+    text-shadow: 0 0 24px rgba(110,230,70,0.55);
+  }
+
+  /* Dot grid pattern background */
+  .bg-dot-pattern {
+    background-image: radial-gradient(circle, #D4D4D2 1px, transparent 1px);
+    background-size: 28px 28px;
+  }
+
+  /* Status indicator pulse */
+  .status-online {
+    @apply relative;
+  }
+  .status-online::before {
+    content: '';
+    @apply absolute -left-3 top-1/2 -translate-y-1/2 w-2 h-2 rounded-full bg-[#6EE646];
+    animation: statusPulse 2s ease-in-out infinite;
+  }
+
+  /* Card hover lift */
+  .card-hover {
+    @apply transition-all duration-200 ease-out;
+  }
+  .card-hover:hover {
+    @apply -translate-y-1 shadow-md;
+  }
+}
+
+@keyframes statusPulse {
+  0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(110,230,70,0.4); }
+  50% { opacity: 0.8; box-shadow: 0 0 0 4px rgba(110,230,70,0); }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulseGlow {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+/* ── Navigator assistant Markdown styles (Stream 6 S6.F1) ── */
+.navigator-prose > :first-child { margin-top: 0; }
+.navigator-prose > :last-child { margin-bottom: 0; }
+.navigator-prose p { margin: 0.25rem 0; line-height: 1.6; }
+.navigator-prose strong { font-weight: 600; }
+.navigator-prose em { font-style: italic; }
+.navigator-prose a {
+  color: #1E40AF;
+  text-decoration: underline;
+  word-break: break-all;
+}
+.navigator-prose code {
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  background: #FFFFFF;
+  border: 1px solid #E2E2E0;
+  border-radius: 4px;
+  padding: 0 4px;
+}
+.navigator-prose pre {
+  background: #FFFFFF;
+  border: 1px solid #E2E2E0;
+  border-radius: 6px;
+  padding: 8px 10px;
+  margin: 0.5rem 0;
+  overflow-x: auto;
+  font-size: 12.5px;
+  line-height: 1.5;
+}
+.navigator-prose pre code {
+  background: transparent;
+  border: 0;
+  padding: 0;
+}
+.navigator-prose ul { list-style: disc; margin: 0.25rem 0 0.25rem 1.25rem; }
+.navigator-prose ol { list-style: decimal; margin: 0.25rem 0 0.25rem 1.25rem; }
+.navigator-prose li { margin: 0.125rem 0; }
+.navigator-prose h1 { font-size: 1rem; font-weight: 600; margin: 0.5rem 0 0.25rem; }
+.navigator-prose h2 { font-size: 0.95rem; font-weight: 600; margin: 0.5rem 0 0.25rem; }
+.navigator-prose h3 { font-size: 0.9rem; font-weight: 500; margin: 0.5rem 0 0.25rem; }
+.navigator-prose blockquote {
+  border-left: 2px solid #D4D4D2;
+  margin: 0.25rem 0;
+  padding: 0 0 0 0.5rem;
+  color: #6B6B6B;
+}
+.navigator-prose hr { border: 0; border-top: 1px solid #E2E2E0; margin: 0.5rem 0; }
